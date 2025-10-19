@@ -5,46 +5,114 @@
 [node name="main" type="Node2D"]
 script = ExtResource("1_ig7tw")
 
-[node name="money" type="Label" parent="."]
-offset_left = 3.0
-offset_right = 57.0
-offset_bottom = 23.0
-text = "money"
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.15, 0.15, 0.2, 1)
 
-[node name="happiness" type="Label" parent="."]
-offset_left = 3.0
-offset_top = 23.0
-offset_right = 72.0
-offset_bottom = 46.0
-text = "hapiness"
-
-[node name="social" type="Label" parent="."]
-offset_left = 3.0
-offset_top = 47.0
-offset_right = 47.0
+[node name="GameTitle" type="Label" parent="."]
+offset_left = 320.0
+offset_top = 20.0
+offset_right = 832.0
 offset_bottom = 70.0
-text = "social"
+theme_override_colors/font_color = Color(1, 0.9, 0.6, 1)
+theme_override_font_sizes/font_size = 40
+text = "Life Balance"
+horizontal_alignment = 1
 
-[node name="energy" type="Label" parent="."]
-offset_left = 3.0
-offset_top = 67.0
-offset_right = 56.0
-offset_bottom = 94.0
-text = "energy"
+[node name="StatsPanel" type="Panel" parent="."]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 280.0
+offset_bottom = 380.0
 
-[node name="stage" type="Label" parent="."]
-offset_left = 3.0
-offset_top = 90.0
-offset_right = 100.0
-offset_bottom = 110.0
-text = "Stage: 1"
+[node name="PanelTitle" type="Label" parent="StatsPanel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 250.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(1, 0.9, 0.6, 1)
+theme_override_font_sizes/font_size = 24
+text = "Your Stats"
+horizontal_alignment = 1
+
+[node name="money" type="Label" parent="StatsPanel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 60.0
+offset_right = 240.0
+offset_bottom = 95.0
+theme_override_colors/font_color = Color(0.4, 0.8, 0.4, 1)
+theme_override_font_sizes/font_size = 24
+text = "💰 Money: 100"
+
+[node name="happiness" type="Label" parent="StatsPanel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 110.0
+offset_right = 240.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(1, 0.4, 0.5, 1)
+theme_override_font_sizes/font_size = 24
+text = "❤️ Happiness: 100"
+
+[node name="social" type="Label" parent="StatsPanel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 160.0
+offset_right = 240.0
+offset_bottom = 195.0
+theme_override_colors/font_color = Color(0.5, 0.6, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "👥 Social: 100"
+
+[node name="energy" type="Label" parent="StatsPanel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 210.0
+offset_right = 240.0
+offset_bottom = 245.0
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
+theme_override_font_sizes/font_size = 24
+text = "⚡ Energy: 100"
+
+[node name="Separator" type="ColorRect" parent="StatsPanel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 260.0
+offset_right = 240.0
+offset_bottom = 263.0
+color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="stage" type="Label" parent="StatsPanel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 280.0
+offset_right = 240.0
+offset_bottom = 340.0
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 20
+text = "Stage: 1 (0/6 cards)
+Young Adult"
+vertical_alignment = 1
+
+[node name="InstructionLabel" type="Label" parent="."]
+offset_left = 320.0
+offset_top = 80.0
+offset_right = 832.0
+offset_bottom = 115.0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_font_sizes/font_size = 18
+text = "Choose a card to make a decision"
+horizontal_alignment = 1
 
 [node name="card_container" type="HBoxContainer" parent="."]
-offset_left = 225.0
-offset_top = 175.0
-offset_right = 931.0
-offset_bottom = 577.0
-theme_override_constants/separation = 40
+offset_left = 320.0
+offset_top = 130.0
+offset_right = 1132.0
+offset_bottom = 620.0
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="reveal_overlay" type="ColorRect" parent="."]
@@ -52,7 +120,9 @@ visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0, 0, 0, 0.7)
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.85)
 
 [node name="reveal_panel" type="Panel" parent="reveal_overlay"]
 layout_mode = 1
@@ -61,10 +131,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1.0
-offset_top = 2.0
-offset_right = 1152.0
-offset_bottom = 653.0
+offset_left = -350.0
+offset_top = -150.0
+offset_right = 350.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -72,28 +142,28 @@ grow_vertical = 2
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 14.0
-offset_top = 223.0
-offset_right = -26.0
-offset_bottom = 263.0
+offset_top = 30.0
+offset_bottom = 80.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1, 0.9, 0.6, 1)
+theme_override_font_sizes/font_size = 32
 text = "Card Effects Revealed!"
 horizontal_alignment = 1
 
 [node name="reveal_effects" type="Label" parent="reveal_overlay/reveal_panel"]
 layout_mode = 1
-anchors_preset = 14
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -61.0
-offset_top = 23.0
-offset_right = 62.0
-offset_bottom = 93.0
+offset_left = -300.0
+offset_top = -20.0
+offset_right = 300.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 42
 text = "💰+50 ❤️-20 👥+0 ⚡-30"
 horizontal_alignment = 1
 
@@ -106,7 +176,9 @@ visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0, 0, 0, 0.8)
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.9)
 
 [node name="typing_panel" type="Panel" parent="typing_overlay"]
 layout_mode = 1
@@ -115,9 +187,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 4.0
-offset_right = 1143.0
-offset_bottom = 646.0
+offset_left = -450.0
+offset_top = -200.0
+offset_right = 450.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -126,15 +199,17 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 336.0
-offset_top = 170.0
-offset_right = -409.0
-offset_bottom = -212.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 24
+text = "Description appears here..."
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="typing_timer" type="Timer" parent="."]
 wait_time = 0.05

@@ -2,30 +2,68 @@
 
 [ext_resource type="Script" uid="uid://cvhr4c7d357a3" path="res://card.gd" id="1_kikvd"]
 
-[node name="card" type="VBoxContainer"]
-custom_minimum_size = Vector2(120, 120)
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="card" type="Panel"]
+custom_minimum_size = Vector2(240, 450)
+offset_right = 240.0
+offset_bottom = 450.0
 script = ExtResource("1_kikvd")
 
-[node name="title" type="Label" parent="."]
-custom_minimum_size = Vector2(0, 60)
+[node name="CardContent" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="title" type="Label" parent="CardContent"]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.6, 1)
+theme_override_font_sizes/font_size = 20
+text = "Card Title"
 horizontal_alignment = 1
-autowrap_mode = 2
+vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="description" type="Label" parent="."]
-custom_minimum_size = Vector2(10, 60)
+[node name="Separator1" type="ColorRect" parent="CardContent"]
+custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
+color = Color(0.5, 0.5, 0.5, 0.5)
+
+[node name="description" type="Label" parent="CardContent"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 16
+text = "Card description goes here..."
 horizontal_alignment = 1
-autowrap_mode = 2
+vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="effects" type="Label" parent="."]
+[node name="Separator2" type="ColorRect" parent="CardContent"]
+custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
+color = Color(0.5, 0.5, 0.5, 0.5)
 
-[node name="choose" type="Button" parent="."]
-custom_minimum_size = Vector2(0, 30)
+[node name="effects" type="Label" parent="CardContent"]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "💰+0 ❤️+0 👥+0 ⚡+0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="choose" type="Button" parent="CardContent"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
 text = "CHOOSE"
 
-[connection signal="pressed" from="choose" to="." method="_on_choose_pressed"]
+[connection signal="pressed" from="CardContent/choose" to="." method="_on_choose_pressed"]
