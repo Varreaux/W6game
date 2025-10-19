@@ -1,0 +1,145 @@
+[gd_scene load_steps=2 format=3 uid="uid://brpw2ma5rh5gj"]
+
+[ext_resource type="Script" uid="uid://bsoj4d8nxc8m0" path="res://main.gd" id="1_ig7tw"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_ig7tw")
+
+[node name="money" type="Label" parent="."]
+offset_left = 3.0
+offset_right = 57.0
+offset_bottom = 23.0
+text = "money"
+
+[node name="happiness" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 23.0
+offset_right = 72.0
+offset_bottom = 46.0
+text = "hapiness"
+
+[node name="social" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 47.0
+offset_right = 47.0
+offset_bottom = 70.0
+text = "social"
+
+[node name="energy" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 67.0
+offset_right = 56.0
+offset_bottom = 94.0
+text = "energy"
+
+[node name="stage" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 90.0
+offset_right = 100.0
+offset_bottom = 110.0
+text = "Stage: 1"
+
+[node name="card_container" type="HBoxContainer" parent="."]
+offset_left = 225.0
+offset_top = 175.0
+offset_right = 931.0
+offset_bottom = 577.0
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="reveal_overlay" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.7)
+
+[node name="reveal_panel" type="Panel" parent="reveal_overlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 1152.0
+offset_bottom = 653.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="reveal_title" type="Label" parent="reveal_overlay/reveal_panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 14.0
+offset_top = 223.0
+offset_right = -26.0
+offset_bottom = 263.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Card Effects Revealed!"
+horizontal_alignment = 1
+
+[node name="reveal_effects" type="Label" parent="reveal_overlay/reveal_panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = 23.0
+offset_right = 62.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "💰+50 ❤️-20 👥+0 ⚡-30"
+horizontal_alignment = 1
+
+[node name="reveal_timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="typing_overlay" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.8)
+
+[node name="typing_panel" type="Panel" parent="typing_overlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_right = 1143.0
+offset_bottom = 646.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="typing_text" type="Label" parent="typing_overlay/typing_panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 336.0
+offset_top = 170.0
+offset_right = -409.0
+offset_bottom = -212.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="typing_timer" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="typing_sound" type="AudioStreamPlayer" parent="."]
+
+[connection signal="timeout" from="reveal_timer" to="." method="_on_reveal_timer_timeout"]
+[connection signal="timeout" from="typing_timer" to="." method="_on_typing_timer_timeout"]

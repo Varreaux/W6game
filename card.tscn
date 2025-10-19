@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://r1rng8h7036r"]
+
+[ext_resource type="Script" uid="uid://cvhr4c7d357a3" path="res://card.gd" id="1_kikvd"]
+
+[node name="card" type="VBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_kikvd")
+
+[node name="title" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="description" type="Label" parent="."]
+custom_minimum_size = Vector2(10, 60)
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="effects" type="Label" parent="."]
+layout_mode = 2
+
+[node name="choose" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "CHOOSE"
+
+[connection signal="pressed" from="choose" to="." method="_on_choose_pressed"]
