@@ -134,6 +134,12 @@ func apply_card(card):
 	energy += card.energy
 	cards_played_this_stage += 1
 	
+	# Check for lose condition
+	if check_lose_condition():
+		clear_cards()
+		show_lose_screen()
+		return
+	
 	# Check if we should advance to next stage
 	if cards_played_this_stage >= cards_per_stage and current_stage < 4:
 		current_stage += 1
@@ -200,3 +206,40 @@ func _on_typing_timer_timeout():
 func clear_cards():
 	for card in $card_container.get_children():
 		card.queue_free()
+
+func check_lose_condition():
+	# Check if any stat has gone negative
+	if money < 0 or happiness < 0 or social < 0 or energy < 0:
+		return true
+	return false
+
+func show_lose_screen():
+	# Customize the lose message based on which stat(s) went negative
+	var negative_stats = []
+	if money < 0:
+		negative_stats.append("Money")
+	if happiness < 0:
+		negative_stats.append("Happiness")
+	if social < 0:
+		negative_stats.append("Social")
+	if energy < 0:
+		negative_stats.append("Energy")
+	
+	var message = ""
+	if negative_stats.size() > 1:
+		message = negative_stats[0]
+		for i in range(1, negative_stats.size()):
+			if i == negative_stats.size() - 1:
+				message += " and " + negative_stats[i]
+			else:
+				message += ", " + negative_stats[i]
+		message += " dropped below zero!\nLife balance is everything."
+	else:
+		message = negative_stats[0] + " dropped below zero!\nLife balance is everything."
+	
+	# Load the lose screen scene
+	var lose_scene = load("res://lose_screen.tscn").instantiate()
+	lose_scene.set_lose_reason(message)
+	get_tree().root.add_child(lose_scene)
+	get_tree().current_scene = lose_scene
+	queue_free()
