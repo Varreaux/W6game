@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgbtrqk1vhyuy"]
+[gd_scene load_steps=6 format=3 uid="uid://dgbtrqk1vhyuy"]
 
 [ext_resource type="Script" uid="uid://d2yp07ptkmmre" path="res://win_screen.gd" id="1_win"]
+[ext_resource type="FontFile" uid="uid://d1f33vk4fw6h2" path="res://EmojiSymbols-Regular.ttf" id="2_1txte"]
 [ext_resource type="StyleBox" uid="uid://d0hkivuyjn1jd" path="res://1.tres" id="2_l5t5q"]
 [ext_resource type="StyleBox" uid="uid://bbxy68iofkr1v" path="res://2.tres" id="3_1txte"]
 
@@ -82,6 +83,8 @@ offset_top = 180.0
 offset_right = -20.0
 offset_bottom = 340.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8862745, 0.9098039, 0.9411765, 1)
+theme_override_fonts/font = ExtResource("2_1txte")
 theme_override_font_sizes/font_size = 28
 text = "Final Stats:
 💰 Money: 100
@@ -99,6 +102,8 @@ offset_top = 401.0
 offset_right = -20.0
 offset_bottom = 481.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8862745, 0.9098039, 0.9411765, 1)
+theme_override_fonts/font = ExtResource("2_1txte")
 theme_override_font_sizes/font_size = 20
 text = "You successfully balanced all aspects of life!
 Congratulations on making it through!"
