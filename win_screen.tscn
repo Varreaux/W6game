@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgbtrqk1vhyuy"]
+[gd_scene load_steps=6 format=3 uid="uid://ctq15h2dcidlj"]
 
 [ext_resource type="Script" uid="uid://d2yp07ptkmmre" path="res://win_screen.gd" id="1_win"]
 [ext_resource type="FontFile" uid="uid://d1f33vk4fw6h2" path="res://EmojiSymbols-Regular.ttf" id="2_1txte"]
-[ext_resource type="StyleBox" uid="uid://d0hkivuyjn1jd" path="res://1.tres" id="2_l5t5q"]
-[ext_resource type="StyleBox" uid="uid://bbxy68iofkr1v" path="res://2.tres" id="3_1txte"]
+[ext_resource type="StyleBox" path="res://1.tres" id="2_l5t5q"]
+[ext_resource type="StyleBox" path="res://2.tres" id="3_1txte"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2arl"]
 bg_color = Color(0.05882353, 0.09019608, 0.1254902, 1)
@@ -74,24 +74,87 @@ theme_override_font_sizes/font_size = 24
 text = "You survived all 4 stages of life!"
 horizontal_alignment = 1
 
-[node name="stats_label" type="Label" parent="Panel"]
+[node name="stats_container" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 20.0
-offset_top = 180.0
+offset_top = 168.0
 offset_right = -20.0
-offset_bottom = 340.0
+offset_bottom = 403.0
 grow_horizontal = 2
+theme_override_constants/separation = 10
+
+[node name="stats_title" type="Label" parent="Panel/stats_container"]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.8862745, 0.9098039, 0.9411765, 1)
+theme_override_font_sizes/font_size = 28
+text = "Final Stats:"
+horizontal_alignment = 1
+
+[node name="money_stat" type="HBoxContainer" parent="Panel/stats_container"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="money_emoji" type="Label" parent="Panel/stats_container/money_stat"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_1txte")
 theme_override_font_sizes/font_size = 28
-text = "Final Stats:
-💰 Money: 100
-❤️ Happiness: 100
-👥 Social: 100
-⚡ Energy: 100"
-horizontal_alignment = 1
+text = "💰"
+
+[node name="money_text" type="Label" parent="Panel/stats_container/money_stat"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8862745, 0.9098039, 0.9411765, 1)
+theme_override_font_sizes/font_size = 28
+text = "Money: 100"
+
+[node name="happiness_stat" type="HBoxContainer" parent="Panel/stats_container"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="happiness_emoji" type="Label" parent="Panel/stats_container/happiness_stat"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1txte")
+theme_override_font_sizes/font_size = 28
+text = "❤️"
+
+[node name="happiness_text" type="Label" parent="Panel/stats_container/happiness_stat"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8862745, 0.9098039, 0.9411765, 1)
+theme_override_font_sizes/font_size = 28
+text = "Happiness: 100"
+
+[node name="social_stat" type="HBoxContainer" parent="Panel/stats_container"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="social_emoji" type="Label" parent="Panel/stats_container/social_stat"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1txte")
+theme_override_font_sizes/font_size = 28
+text = "👥"
+
+[node name="social_text" type="Label" parent="Panel/stats_container/social_stat"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8862745, 0.9098039, 0.9411765, 1)
+theme_override_font_sizes/font_size = 28
+text = "Social: 100"
+
+[node name="energy_stat" type="HBoxContainer" parent="Panel/stats_container"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="energy_emoji" type="Label" parent="Panel/stats_container/energy_stat"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1txte")
+theme_override_font_sizes/font_size = 28
+text = "⚡"
+
+[node name="energy_text" type="Label" parent="Panel/stats_container/energy_stat"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8862745, 0.9098039, 0.9411765, 1)
+theme_override_font_sizes/font_size = 28
+text = "Energy: 100"
 
 [node name="message" type="Label" parent="Panel"]
 layout_mode = 1
@@ -103,7 +166,6 @@ offset_right = -20.0
 offset_bottom = 481.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.8862745, 0.9098039, 0.9411765, 1)
-theme_override_fonts/font = ExtResource("2_1txte")
 theme_override_font_sizes/font_size = 20
 text = "You successfully balanced all aspects of life!
 Congratulations on making it through!"

@@ -7,13 +7,11 @@ func set_data(data):
 	$CardContent/title.text = data.name
 	$CardContent/description.text = data.description
 	
-	# Format effects with proper +/- signs
-	var money_text = "%+d" % data.money if data.money != 0 else "±0"
-	var happiness_text = "%+d" % data.happiness if data.happiness != 0 else "±0"
-	var social_text = "%+d" % data.social if data.social != 0 else "±0"
-	var energy_text = "%+d" % data.energy if data.energy != 0 else "±0"
-	
-	$CardContent/effects.text = "💰%s  ❤️%s  👥%s  ⚡%s" % [money_text, happiness_text, social_text, energy_text]
+	# Update effects with separate emoji and value labels
+	$CardContent/effects_container/money_effect/money_value.text = "%+d" % data.money
+	$CardContent/effects_container/happiness_effect/happiness_value.text = "%+d" % data.happiness
+	$CardContent/effects_container/social_effect/social_value.text = "%+d" % data.social
+	$CardContent/effects_container/energy_effect/energy_value.text = "%+d" % data.energy
 	
 	# Apply blur effect if card is blurred
 	if data.has("blur_type"):
@@ -29,10 +27,17 @@ func apply_blur(blur_type = "both"):
 	if blur_type == "both":
 		# Blur both description and effects
 		$CardContent/description.material = blur_material
-		$CardContent/effects.material = blur_material
+		# Blur all effect value labels
+		$CardContent/effects_container/money_effect/money_value.material = blur_material
+		$CardContent/effects_container/happiness_effect/happiness_value.material = blur_material
+		$CardContent/effects_container/social_effect/social_value.material = blur_material
+		$CardContent/effects_container/energy_effect/energy_value.material = blur_material
 	elif blur_type == "effects":
 		# Blur only effects, keep description clear
-		$CardContent/effects.material = blur_material
+		$CardContent/effects_container/money_effect/money_value.material = blur_material
+		$CardContent/effects_container/happiness_effect/happiness_value.material = blur_material
+		$CardContent/effects_container/social_effect/social_value.material = blur_material
+		$CardContent/effects_container/energy_effect/energy_value.material = blur_material
 		$CardContent/description.material = null
 
 func _on_choose_pressed():

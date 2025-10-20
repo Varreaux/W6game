@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform float blur_amount : hint_range(0.0, 10.0) = 5.0;
+uniform float blur_amount : hint_range(0.0, 10.0) = 10.0;
 
 void fragment() {
 	vec2 tex_size = 1.0 / TEXTURE_PIXEL_SIZE;

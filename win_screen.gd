@@ -12,12 +12,10 @@ func set_final_stats(stats: Dictionary):
 		update_stats_display()
 
 func update_stats_display():
-	$Panel/stats_label.text = "Final Stats:\n💰 Money: %d\n❤️ Happiness: %d\n👥 Social: %d\n⚡ Energy: %d" % [
-		final_stats.money,
-		final_stats.happiness,
-		final_stats.social,
-		final_stats.energy
-	]
+	$Panel/stats_container/money_stat/money_text.text = "Money: %d" % final_stats.money
+	$Panel/stats_container/happiness_stat/happiness_text.text = "Happiness: %d" % final_stats.happiness
+	$Panel/stats_container/social_stat/social_text.text = "Social: %d" % final_stats.social
+	$Panel/stats_container/energy_stat/energy_text.text = "Energy: %d" % final_stats.energy
 
 func _on_restart_button_pressed():
 	# Return to main game scene

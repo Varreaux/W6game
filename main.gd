@@ -18,10 +18,10 @@ func _ready():
 	update_labels()
 
 func update_labels():
-	$StatsPanel/money.text = "💰 Money: %d" % money
-	$StatsPanel/happiness.text = "❤️ Happiness: %d" % happiness
-	$StatsPanel/social.text = "👥 Social: %d" % social
-	$StatsPanel/energy.text = "⚡ Energy: %d" % energy
+	$StatsPanel/money_container/money_text.text = "Money: %d" % money
+	$StatsPanel/happiness_container/happiness_text.text = "Happiness: %d" % happiness
+	$StatsPanel/social_container/social_text.text = "Social: %d" % social
+	$StatsPanel/energy_container/energy_text.text = "Energy: %d" % energy
 	
 	# Get stage name
 	var stage_names = {
@@ -186,7 +186,11 @@ func apply_card(card):
 func show_reveal_screen(card_data):
 	$reveal_overlay.visible = true
 	$reveal_overlay/reveal_panel/reveal_title.text = card_data.name
-	$reveal_overlay/reveal_panel/reveal_effects.text = "💰%d ❤️%d 👥%d ⚡%d" % [card_data.money, card_data.happiness, card_data.social, card_data.energy]
+	# Update effects with separate emoji and value labels
+	$reveal_overlay/reveal_panel/reveal_effects_container/money_effect/money_value.text = "%+d" % card_data.money
+	$reveal_overlay/reveal_panel/reveal_effects_container/happiness_effect/happiness_value.text = "%+d" % card_data.happiness
+	$reveal_overlay/reveal_panel/reveal_effects_container/social_effect/social_value.text = "%+d" % card_data.social
+	$reveal_overlay/reveal_panel/reveal_effects_container/energy_effect/energy_value.text = "%+d" % card_data.energy
 	
 	# Auto-hide after 3 seconds
 	$reveal_timer.start(1.0)
@@ -226,6 +230,7 @@ func _on_typing_timer_timeout():
 func clear_cards():
 	for card in $card_container.get_children():
 		card.queue_free()
+
 
 func check_lose_condition():
 	# Check if any stat has gone negative
